@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Burton Developers and Designers and Data Experts | Portfolio</title>
+  <title>Burton Developers | Portfolio</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      background: radial-gradient(circle at 20% 30%, #ff7e5f 0%, #feb47b 40%, #6dd5ed 100%);
       color: #fff;
       min-height: 100vh;
       overflow-x: hidden;
@@ -19,6 +18,7 @@
       text-align: center;
       padding: 60px 20px 20px 20px;
       animation: fadeInDown 1s;
+      position: relative;
     }
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-40px);}
@@ -28,21 +28,47 @@
       font-size: 3rem;
       margin-bottom: 10px;
       letter-spacing: 2px;
-      animation: glow 2s infinite alternate;
+      animation: neonGlow 2s infinite alternate;
+      position: relative;
+      z-index: 1;
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #fff, 0 0 20px #1e90ff;}
-      to { text-shadow: 0 0 20px #fff, 0 0 40px #1e90ff;}
+    @keyframes neonGlow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff7e5f, 0 0 30px #feb47b;}
+      to { text-shadow: 0 0 20px #fff, 0 0 40px #6dd5ed, 0 0 60px #feb47b;}
     }
     .subtitle {
       font-size: 1.3rem;
-      color: #b3c6ff;
+      color: #f0f8ff;
       margin-bottom: 30px;
       animation: fadeIn 2s;
     }
     @keyframes fadeIn {
       from { opacity: 0;}
       to { opacity: 1;}
+    }
+    .contact-btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 32px;
+      background: linear-gradient(90deg,#6dd5ed,#ff7e5f);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 16px rgba(255,126,95,0.2);
+      transition: background 0.3s, transform 0.2s;
+      animation: bounceIn 1.2s;
+    }
+    .contact-btn:hover {
+      background: linear-gradient(90deg,#ff7e5f,#6dd5ed);
+      transform: scale(1.12) rotate(-2deg);
+      box-shadow: 0 4px 32px rgba(255,126,95,0.3);
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.8);}
+      60% { transform: scale(1.1);}
+      100% { transform: scale(1);}
     }
     .skills {
       display: flex;
@@ -52,22 +78,40 @@
       margin: 40px 0;
     }
     .skill-card {
-      background: rgba(255,255,255,0.08);
+      background: linear-gradient(135deg, #6dd5ed 0%, #ff7e5f 100%);
       border-radius: 16px;
       padding: 24px 32px;
       min-width: 180px;
       text-align: center;
-      box-shadow: 0 4px 24px rgba(30,60,114,0.2);
-      transition: transform 0.3s;
-      animation: popIn 0.8s;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 4px 24px rgba(255,126,95,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: floatIn 1s;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-card::after {
+      content: '';
+      position: absolute;
+      top: -40px; left: -40px;
+      width: 80px; height: 80px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+      z-index: 0;
+      animation: pulse 2s infinite alternate;
+    }
+    @keyframes pulse {
+      from { opacity: 0.5; }
+      to { opacity: 1; }
     }
     .skill-card:hover {
-      transform: scale(1.08) rotate(-2deg);
-      box-shadow: 0 8px 32px rgba(30,60,114,0.3);
+      transform: scale(1.12) rotate(-2deg);
+      box-shadow: 0 8px 32px rgba(255,126,95,0.3);
     }
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.8);}
-      to { opacity: 1; transform: scale(1);}
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
     }
     .projects {
       max-width: 900px;
@@ -75,16 +119,30 @@
       padding: 0 20px;
     }
     .project {
-      background: rgba(255,255,255,0.07);
+      background: linear-gradient(90deg, #feb47b 0%, #6dd5ed 100%);
       border-radius: 12px;
       margin-bottom: 24px;
       padding: 24px;
-      box-shadow: 0 2px 12px rgba(30,60,114,0.15);
-      transition: box-shadow 0.3s;
+      box-shadow: 0 2px 12px rgba(255,126,95,0.15);
+      transition: box-shadow 0.3s, transform 0.3s;
       animation: fadeInUp 1s;
+      color: #222;
+      position: relative;
+      overflow: hidden;
+    }
+    .project::before {
+      content: '';
+      position: absolute;
+      right: -30px; top: -30px;
+      width: 60px; height: 60px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      z-index: 0;
+      animation: pulse 2s infinite alternate;
     }
     .project:hover {
-      box-shadow: 0 6px 24px rgba(30,60,114,0.25);
+      box-shadow: 0 6px 24px rgba(255,126,95,0.25);
+      transform: scale(1.04);
     }
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(40px);}
@@ -93,39 +151,28 @@
     .project-title {
       font-size: 1.4rem;
       margin-bottom: 8px;
-      color: #b3c6ff;
+      color: #ff7e5f;
+      font-weight: bold;
+      z-index: 1;
+      position: relative;
     }
     .project-desc {
       font-size: 1rem;
-      color: #e0e7ff;
+      color: #222;
+      z-index: 1;
+      position: relative;
     }
     footer {
       text-align: center;
       padding: 30px 10px;
       font-size: 1.1rem;
-      color: #b3c6ff;
-      background: rgba(30,60,114,0.2);
-      border-top: 1px solid #2a5298;
+      color: #fff;
+      background: linear-gradient(90deg, #6dd5ed 0%, #ff7e5f 100%);
+      border-top: 1px solid #feb47b;
       margin-top: 40px;
       animation: fadeIn 2s;
-    }
-    .contact-btn {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 12px 32px;
-      background: linear-gradient(90deg,#1e90ff,#2a5298);
-      color: #fff;
-      border: none;
-      border-radius: 24px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(30,60,114,0.2);
-      transition: background 0.3s, transform 0.2s;
-      animation: popIn 1.2s;
-    }
-    .contact-btn:hover {
-      background: linear-gradient(90deg,#2a5298,#1e90ff);
-      transform: scale(1.07);
+      font-weight: 700;
+      letter-spacing: 1px;
     }
     @media (max-width: 600px) {
       h1 { font-size: 2rem;}
@@ -138,7 +185,7 @@
 </head>
 <body>
   <header>
-    <h1>Burton Developers and Designers and Data Experts</h1>
+    <h1>Burton Developers, Designers and Data Experts</h1>
     <div class="subtitle">Creative Developer | UI/UX Enthusiast | Problem Solver</div>
     <button class="contact-btn" onclick="window.location.href='mailto:your@email.com'">Contact Me</button>
   </header>
@@ -170,7 +217,7 @@
   </section>
 
   <footer>
-    &copy; 2025 Burton Developers and Designers and Data Experts &mdash; Let's build something amazing together!
+    &copy; 2025 Burton Developer, Designers and Data Experts &mdash; Let's build something amazing together!
   </footer>
 </body>
 </html>
