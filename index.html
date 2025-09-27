@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Your Name | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 20px 20px;
+      animation: fadeInDown 1s;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #1e90ff;}
+      to { text-shadow: 0 0 20px #fff, 0 0 40px #1e90ff;}
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      color: #b3c6ff;
+      margin-bottom: 30px;
+      animation: fadeIn 2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0;}
+      to { opacity: 1;}
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 0;
+    }
+    .skill-card {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 24px 32px;
+      min-width: 180px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(30,60,114,0.2);
+      transition: transform 0.3s;
+      animation: popIn 0.8s;
+    }
+    .skill-card:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 8px 32px rgba(30,60,114,0.3);
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.8);}
+      to { opacity: 1; transform: scale(1);}
+    }
+    .projects {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+      padding: 0 20px;
+    }
+    .project {
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      margin-bottom: 24px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(30,60,114,0.15);
+      transition: box-shadow 0.3s;
+      animation: fadeInUp 1s;
+    }
+    .project:hover {
+      box-shadow: 0 6px 24px rgba(30,60,114,0.25);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .project-title {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: #b3c6ff;
+    }
+    .project-desc {
+      font-size: 1rem;
+      color: #e0e7ff;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      font-size: 1.1rem;
+      color: #b3c6ff;
+      background: rgba(30,60,114,0.2);
+      border-top: 1px solid #2a5298;
+      margin-top: 40px;
+      animation: fadeIn 2s;
+    }
+    .contact-btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 12px 32px;
+      background: linear-gradient(90deg,#1e90ff,#2a5298);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(30,60,114,0.2);
+      transition: background 0.3s, transform 0.2s;
+      animation: popIn 1.2s;
+    }
+    .contact-btn:hover {
+      background: linear-gradient(90deg,#2a5298,#1e90ff);
+      transform: scale(1.07);
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem;}
+      .skills { gap: 16px;}
+      .skill-card { min-width: 120px; padding: 16px 10px;}
+      .projects { padding: 0 5px;}
+      .project { padding: 14px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Name</h1>
+    <div class="subtitle">Creative Developer | UI/UX Enthusiast | Problem Solver</div>
+    <button class="contact-btn" onclick="window.location.href='mailto:your@email.com'">Contact Me</button>
+  </header>
+
+  <section class="skills">
+    <div class="skill-card">HTML5 & CSS3</div>
+    <div class="skill-card">JavaScript & TypeScript</div>
+    <div class="skill-card">React & Vue</div>
+    <div class="skill-card">Node.js & Express</div>
+    <div class="skill-card">UI/UX Design</div>
+    <div class="skill-card">Git & GitHub</div>
+    <div class="skill-card">REST APIs</div>
+    <div class="skill-card">Animations</div>
+  </section>
+
+  <section class="projects">
+    <div class="project">
+      <div class="project-title">Animated Portfolio Website</div>
+      <div class="project-desc">A modern, interactive portfolio built with React and GSAP, featuring smooth transitions and engaging UI elements.</div>
+    </div>
+    <div class="project">
+      <div class="project-title">E-commerce Dashboard</div>
+      <div class="project-desc">A responsive dashboard for managing products, orders, and analytics, built with Vue and Chart.js.</div>
+    </div>
+    <div class="project">
+      <div class="project-title">Creative Landing Page</div>
+      <div class="project-desc">A visually stunning landing page with custom SVG animations and scroll effects, designed for a startup.</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Your Name &mdash; Let's build something amazing together!
+  </footer>
+</body>
+</html>
