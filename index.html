@@ -14,35 +14,93 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-    /* Moving background objects */
-    .bg-objects {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: 0;
+    .header-simple {
+      text-align: center;
+      padding: 48px 20px 20px 20px;
+      background: #fff;
+      border-bottom: 2px solid #e0e7ef;
+      box-shadow: 0 2px 12px rgba(67,206,162,0.08);
     }
-    .bg-obj {
+    .header-simple h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #185a9d;
+      margin: 0 0 10px 0;
+      letter-spacing: 1px;
+    }
+    .header-simple .subtitle {
+      font-size: 1.2rem;
+      color: #43cea2;
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+    .category-bg {
+      position: relative;
+      min-height: 320px;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 24px rgba(67,206,162,0.15);
+      background: #fff;
+    }
+    .category-bg iframe {
       position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
       opacity: 0.18;
-      animation: moveObj 18s linear infinite;
+      pointer-events: none;
+      z-index: 1;
     }
-    .bg-obj.airplane {
-      left: 5vw; top: 10vh; width: 80px;
-      animation-duration: 22s;
+    .category-content {
+      position: relative;
+      z-index: 2;
+      padding: 32px 24px 48px 24px;
     }
-    .bg-obj.robot {
-      left: 80vw; top: 60vh; width: 70px;
-      animation-duration: 25s;
+    .category-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #43cea2;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      text-align: left;
     }
-    .bg-obj.chart {
-      left: 60vw; top: 20vh; width: 60px;
-      animation-duration: 20s;
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
-    @keyframes moveObj {
-      0% { transform: translateY(0) scale(1);}
-      50% { transform: translateY(40px) scale(1.1);}
-      100% { transform: translateY(0) scale(1);}
+    .skill-card {
+      background: linear-gradient(135deg, #185a9d 0%, #43cea2 100%);
+      border-radius: 12px;
+      padding: 14px 20px;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 2px 12px rgba(67,206,162,0.15);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-card .icon {
+      font-size: 1.3em;
+      margin-right: 6px;
+      filter: drop-shadow(0 0 2px #fff);
+    }
+    .skill-card:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 8px 32px rgba(67,206,162,0.3);
+      background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+    }
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0 0 0;
     }
     .floating-contact {
       position: fixed;
@@ -76,195 +134,16 @@
       box-shadow: 0 4px 32px rgba(67,206,162,0.3);
       text-decoration: none;
     }
-    header {
-      text-align: center;
-      padding: 60px 20px 20px 20px;
-      animation: fadeInDown 1s;
-      position: relative;
-      z-index: 2;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-40px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-      animation: neonGlow 2s infinite alternate;
-      position: relative;
-      z-index: 2;
-      color: #185a9d;
-      text-shadow: 0 0 10px #43cea2, 0 0 30px #fff;
-    }
-    @keyframes neonGlow {
-      from { text-shadow: 0 0 10px #fff, 0 0 20px #43cea2, 0 0 30px #185a9d;}
-      to { text-shadow: 0 0 20px #fff, 0 0 40px #43cea2, 0 0 60px #185a9d;}
-    }
-    .subtitle {
-      font-size: 1.3rem;
-      color: #185a9d;
-      margin-bottom: 30px;
-      animation: fadeIn 2s;
-      z-index: 2;
-      position: relative;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0;}
-      to { opacity: 1;}
-    }
-    .categories {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin: 40px 0 0 0;
-      z-index: 2;
-      position: relative;
-    }
-    .category {
-      background: rgba(255,255,255,0.95);
-      border-radius: 24px;
-      padding: 32px 24px 48px 24px;
-      min-width: 320px;
-      max-width: 350px;
-      box-shadow: 0 4px 24px rgba(67,206,162,0.15);
-      position: relative;
-      margin-bottom: 40px;
-      overflow: hidden;
-      animation: fadeInUp 1s;
-    }
-    .category-title {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #43cea2;
-      margin-bottom: 18px;
-      letter-spacing: 1px;
-      text-align: left;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .category-list {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      z-index: 2;
-      position: relative;
-    }
-    .skill-card {
-      background: linear-gradient(135deg, #185a9d 0%, #43cea2 100%);
-      border-radius: 12px;
-      padding: 14px 20px;
-      color: #fff;
-      font-weight: 700;
-      box-shadow: 0 2px 12px rgba(67,206,162,0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-      font-size: 1rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .skill-card .icon {
-      font-size: 1.3em;
-      margin-right: 6px;
-      filter: drop-shadow(0 0 2px #fff);
-    }
-    .skill-card:hover {
-      transform: scale(1.08) rotate(-2deg);
-      box-shadow: 0 8px 32px rgba(67,206,162,0.3);
-      background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
-    }
-    /* Animated background objects for each category */
-    .category[data-type="dev"] .category-title::after {
-      content: "💻";
-      font-size: 1.5em;
-      opacity: 0.3;
-      margin-left: 8px;
-      animation: floatObj 4s infinite alternate;
-    }
-    .category[data-type="design"] .category-title::after {
-      content: "🖌️";
-      font-size: 1.5em;
-      opacity: 0.3;
-      margin-left: 8px;
-      animation: floatObj 3s infinite alternate;
-    }
-    .category[data-type="data"] .category-title::after {
-      content: "📊";
-      font-size: 1.5em;
-      opacity: 0.3;
-      margin-left: 8px;
-      animation: floatObj 5s infinite alternate;
-    }
-    @keyframes floatObj {
-      from { transform: translateY(0);}
-      to { transform: translateY(10px);}
-    }
-    .projects {
-      max-width: 900px;
-      margin: 0 auto 40px auto;
-      padding: 0 20px;
-      z-index: 2;
-      position: relative;
-    }
-    .project {
-      background: linear-gradient(90deg, #f8fafc 0%, #e0e7ef 100%);
-      border-radius: 12px;
-      margin-bottom: 24px;
-      padding: 24px;
-      box-shadow: 0 2px 12px rgba(67,206,162,0.15);
-      transition: box-shadow 0.3s, transform 0.3s;
-      animation: fadeInUp 1s;
-      color: #222;
-      position: relative;
-      overflow: hidden;
-    }
-    .project-title {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-      color: #185a9d;
-      font-weight: bold;
-      z-index: 1;
-      position: relative;
-    }
-    .project-desc {
-      font-size: 1rem;
-      color: #222;
-      z-index: 1;
-      position: relative;
-    }
-    footer {
-      text-align: center;
-      padding: 30px 10px;
-      font-size: 1.1rem;
-      color: #185a9d;
-      background: linear-gradient(90deg, #f8fafc 0%, #e0e7ef 100%);
-      border-top: 1px solid #43cea2;
-      margin-top: 40px;
-      animation: fadeIn 2s;
-      font-weight: 700;
-      letter-spacing: 1px;
-      z-index: 2;
-      position: relative;
-    }
     @media (max-width: 1100px) {
       .categories { flex-direction: column; align-items: center; }
-      .category { max-width: 95vw; min-width: 0; }
+      .category-bg { max-width: 95vw; min-width: 0; }
     }
     @media (max-width: 600px) {
-      h1 { font-size: 2rem;}
+      .header-simple h1 { font-size: 1.5rem;}
       .categories { gap: 20px;}
-      .category { padding: 18px 8px 32px 8px;}
+      .category-content { padding: 18px 8px 32px 8px;}
       .category-title { font-size: 1.1rem;}
       .skill-card { font-size: 0.9rem; padding: 10px 8px;}
-      .projects { padding: 0 5px;}
-      .project { padding: 14px;}
       .floating-contact { right: 8px; bottom: 8px;}
     }
   </style>
@@ -272,7 +151,6 @@
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.skill-card').forEach(function(card) {
         card.addEventListener('click', function() {
-          // Simulate showing a related object
           let icon = card.querySelector('.icon');
           if (icon) {
             icon.style.filter = "drop-shadow(0 0 8px #43cea2)";
@@ -285,16 +163,10 @@
   </script>
 </head>
 <body>
-  <!-- Moving background objects -->
-  <div class="bg-objects">
-    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2708.svg" class="bg-obj airplane" alt="airplane">
-    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f916.svg" class="bg-obj robot" alt="robot">
-    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4c8.svg" class="bg-obj chart" alt="chart">
-  </div>
-  <header>
+  <div class="header-simple">
     <h1>Burton Developers, Designers and Data Experts</h1>
     <div class="subtitle">Creative Developer | UI/UX Enthusiast | Data Expert | Problem Solver</div>
-  </header>
+  </div>
 
   <div class="floating-contact">
     <a href="mailto:angeliebiongan@gmail.com" target="_blank" title="Email">
@@ -309,37 +181,46 @@
   </div>
 
   <section class="categories">
-    <div class="category" data-type="dev">
-      <div class="category-title">Development</div>
-      <div class="category-list">
-        <div class="skill-card"><span class="icon">💻</span>HTML5 & CSS3</div>
-        <div class="skill-card"><span class="icon">💻</span>JavaScript & TypeScript</div>
-        <div class="skill-card"><span class="icon">💻</span>React & Vue</div>
-        <div class="skill-card"><span class="icon">💻</span>Node.js & Express</div>
-        <div class="skill-card"><span class="icon">💻</span>Git & GitHub</div>
-        <div class="skill-card"><span class="icon">💻</span>REST APIs</div>
-        <div class="skill-card"><span class="icon">💻</span>Animations</div>
+    <div class="category-bg" style="max-width:350px;">
+      <iframe src="https://www.youtube.com/embed/-G7rilFoXYs?autoplay=1&mute=1&controls=0&loop=1&playlist=-G7rilFoXYs" allow="autoplay"></iframe>
+      <div class="category-content">
+        <div class="category-title">Development</div>
+        <div class="category-list">
+          <div class="skill-card"><span class="icon">💻</span>HTML5 & CSS3</div>
+          <div class="skill-card"><span class="icon">💻</span>JavaScript & TypeScript</div>
+          <div class="skill-card"><span class="icon">💻</span>React & Vue</div>
+          <div class="skill-card"><span class="icon">💻</span>Node.js & Express</div>
+          <div class="skill-card"><span class="icon">💻</span>Git & GitHub</div>
+          <div class="skill-card"><span class="icon">💻</span>REST APIs</div>
+          <div class="skill-card"><span class="icon">💻</span>Animations</div>
+        </div>
       </div>
     </div>
-    <div class="category" data-type="design">
-      <div class="category-title">Design</div>
-      <div class="category-list">
-        <div class="skill-card"><span class="icon">🖌️</span>UI/UX Design</div>
-        <div class="skill-card"><span class="icon">🖌️</span>Creative Prototyping</div>
-        <div class="skill-card"><span class="icon">🖌️</span>Branding & Identity</div>
-        <div class="skill-card"><span class="icon">🖌️</span>Responsive Layouts</div>
-        <div class="skill-card"><span class="icon">🖌️</span>SVG & Vector Graphics</div>
+    <div class="category-bg" style="max-width:350px;">
+      <iframe src="https://www.youtube.com/embed/2aduA_nz8b8?autoplay=1&mute=1&controls=0&loop=1&playlist=2aduA_nz8b8" allow="autoplay"></iframe>
+      <div class="category-content">
+        <div class="category-title">Design</div>
+        <div class="category-list">
+          <div class="skill-card"><span class="icon">🖌️</span>UI/UX Design</div>
+          <div class="skill-card"><span class="icon">🖌️</span>Creative Prototyping</div>
+          <div class="skill-card"><span class="icon">🖌️</span>Branding & Identity</div>
+          <div class="skill-card"><span class="icon">🖌️</span>Responsive Layouts</div>
+          <div class="skill-card"><span class="icon">🖌️</span>SVG & Vector Graphics</div>
+        </div>
       </div>
     </div>
-    <div class="category" data-type="data">
-      <div class="category-title">Data Expertise</div>
-      <div class="category-list">
-        <div class="skill-card"><span class="icon">📊</span>Data Analysis & Visualization</div>
-        <div class="skill-card"><span class="icon">📊</span>SQL & NoSQL Databases</div>
-        <div class="skill-card"><span class="icon">🤖</span>Machine Learning</div>
-        <div class="skill-card"><span class="icon">📦</span>ETL & Data Pipelines</div>
-        <div class="skill-card"><span class="icon">🗄️</span>Big Data Tools</div>
-        <div class="skill-card"><span class="icon">🐍</span>Python & Pandas</div>
+    <div class="category-bg" style="max-width:350px;">
+      <iframe src="https://www.youtube.com/embed/teyg9qVduMc?autoplay=1&mute=1&controls=0&loop=1&playlist=teyg9qVduMc" allow="autoplay"></iframe>
+      <div class="category-content">
+        <div class="category-title">Data Expertise</div>
+        <div class="category-list">
+          <div class="skill-card"><span class="icon">📊</span>Data Analysis & Visualization</div>
+          <div class="skill-card"><span class="icon">📊</span>SQL & NoSQL Databases</div>
+          <div class="skill-card"><span class="icon">🤖</span>Machine Learning</div>
+          <div class="skill-card"><span class="icon">📦</span>ETL & Data Pipelines</div>
+          <div class="skill-card"><span class="icon">🗄️</span>Big Data Tools</div>
+          <div class="skill-card"><span class="icon">🐍</span>Python & Pandas</div>
+        </div>
       </div>
     </div>
   </section>
