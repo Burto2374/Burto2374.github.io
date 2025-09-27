@@ -9,10 +9,40 @@
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: radial-gradient(circle at 20% 30%, #43cea2 0%, #185a9d 100%);
-      color: #fff;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+      color: #222;
       min-height: 100vh;
       overflow-x: hidden;
+    }
+    /* Moving background objects */
+    .bg-objects {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-obj {
+      position: absolute;
+      opacity: 0.18;
+      animation: moveObj 18s linear infinite;
+    }
+    .bg-obj.airplane {
+      left: 5vw; top: 10vh; width: 80px;
+      animation-duration: 22s;
+    }
+    .bg-obj.robot {
+      left: 80vw; top: 60vh; width: 70px;
+      animation-duration: 25s;
+    }
+    .bg-obj.chart {
+      left: 60vw; top: 20vh; width: 60px;
+      animation-duration: 20s;
+    }
+    @keyframes moveObj {
+      0% { transform: translateY(0) scale(1);}
+      50% { transform: translateY(40px) scale(1.1);}
+      100% { transform: translateY(0) scale(1);}
     }
     .floating-contact {
       position: fixed;
@@ -51,6 +81,7 @@
       padding: 60px 20px 20px 20px;
       animation: fadeInDown 1s;
       position: relative;
+      z-index: 2;
     }
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-40px);}
@@ -62,7 +93,9 @@
       letter-spacing: 2px;
       animation: neonGlow 2s infinite alternate;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      color: #185a9d;
+      text-shadow: 0 0 10px #43cea2, 0 0 30px #fff;
     }
     @keyframes neonGlow {
       from { text-shadow: 0 0 10px #fff, 0 0 20px #43cea2, 0 0 30px #185a9d;}
@@ -70,9 +103,11 @@
     }
     .subtitle {
       font-size: 1.3rem;
-      color: #e0f7fa;
+      color: #185a9d;
       margin-bottom: 30px;
       animation: fadeIn 2s;
+      z-index: 2;
+      position: relative;
     }
     @keyframes fadeIn {
       from { opacity: 0;}
@@ -84,9 +119,11 @@
       justify-content: center;
       gap: 40px;
       margin: 40px 0 0 0;
+      z-index: 2;
+      position: relative;
     }
     .category {
-      background: rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.95);
       border-radius: 24px;
       padding: 32px 24px 48px 24px;
       min-width: 320px;
@@ -106,6 +143,9 @@
       text-align: left;
       position: relative;
       z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .category-list {
       display: flex;
@@ -126,6 +166,14 @@
       font-size: 1rem;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .skill-card .icon {
+      font-size: 1.3em;
+      margin-right: 6px;
+      filter: drop-shadow(0 0 2px #fff);
     }
     .skill-card:hover {
       transform: scale(1.08) rotate(-2deg);
@@ -133,47 +181,40 @@
       background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
     }
     /* Animated background objects for each category */
-    .category[data-type="dev"]::before {
-      content: '';
-      position: absolute;
-      top: 10px; right: 10px;
-      width: 60px; height: 60px;
-      background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4bb.svg') no-repeat center/contain;
-      opacity: 0.15;
+    .category[data-type="dev"] .category-title::after {
+      content: "💻";
+      font-size: 1.5em;
+      opacity: 0.3;
+      margin-left: 8px;
       animation: floatObj 4s infinite alternate;
-      z-index: 1;
     }
-    .category[data-type="design"]::before {
-      content: '';
-      position: absolute;
-      top: 10px; right: 10px;
-      width: 60px; height: 60px;
-      background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f58c.svg') no-repeat center/contain;
-      opacity: 0.15;
+    .category[data-type="design"] .category-title::after {
+      content: "🖌️";
+      font-size: 1.5em;
+      opacity: 0.3;
+      margin-left: 8px;
       animation: floatObj 3s infinite alternate;
-      z-index: 1;
     }
-    .category[data-type="data"]::before {
-      content: '';
-      position: absolute;
-      top: 10px; right: 10px;
-      width: 60px; height: 60px;
-      background: url('https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4c8.svg') no-repeat center/contain;
-      opacity: 0.15;
+    .category[data-type="data"] .category-title::after {
+      content: "📊";
+      font-size: 1.5em;
+      opacity: 0.3;
+      margin-left: 8px;
       animation: floatObj 5s infinite alternate;
-      z-index: 1;
     }
     @keyframes floatObj {
       from { transform: translateY(0);}
-      to { transform: translateY(20px);}
+      to { transform: translateY(10px);}
     }
     .projects {
       max-width: 900px;
       margin: 0 auto 40px auto;
       padding: 0 20px;
+      z-index: 2;
+      position: relative;
     }
     .project {
-      background: linear-gradient(90deg, #e0f7fa 0%, #43cea2 100%);
+      background: linear-gradient(90deg, #f8fafc 0%, #e0e7ef 100%);
       border-radius: 12px;
       margin-bottom: 24px;
       padding: 24px;
@@ -202,13 +243,15 @@
       text-align: center;
       padding: 30px 10px;
       font-size: 1.1rem;
-      color: #fff;
-      background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
-      border-top: 1px solid #e0f7fa;
+      color: #185a9d;
+      background: linear-gradient(90deg, #f8fafc 0%, #e0e7ef 100%);
+      border-top: 1px solid #43cea2;
       margin-top: 40px;
       animation: fadeIn 2s;
       font-weight: 700;
       letter-spacing: 1px;
+      z-index: 2;
+      position: relative;
     }
     @media (max-width: 1100px) {
       .categories { flex-direction: column; align-items: center; }
@@ -229,6 +272,12 @@
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.skill-card').forEach(function(card) {
         card.addEventListener('click', function() {
+          // Simulate showing a related object
+          let icon = card.querySelector('.icon');
+          if (icon) {
+            icon.style.filter = "drop-shadow(0 0 8px #43cea2)";
+            setTimeout(() => { icon.style.filter = ""; }, 700);
+          }
           alert('Service: ' + card.textContent.trim());
         });
       });
@@ -236,6 +285,12 @@
   </script>
 </head>
 <body>
+  <!-- Moving background objects -->
+  <div class="bg-objects">
+    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/2708.svg" class="bg-obj airplane" alt="airplane">
+    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f916.svg" class="bg-obj robot" alt="robot">
+    <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f4c8.svg" class="bg-obj chart" alt="chart">
+  </div>
   <header>
     <h1>Burton Developers, Designers and Data Experts</h1>
     <div class="subtitle">Creative Developer | UI/UX Enthusiast | Data Expert | Problem Solver</div>
@@ -257,34 +312,34 @@
     <div class="category" data-type="dev">
       <div class="category-title">Development</div>
       <div class="category-list">
-        <div class="skill-card">HTML5 & CSS3</div>
-        <div class="skill-card">JavaScript & TypeScript</div>
-        <div class="skill-card">React & Vue</div>
-        <div class="skill-card">Node.js & Express</div>
-        <div class="skill-card">Git & GitHub</div>
-        <div class="skill-card">REST APIs</div>
-        <div class="skill-card">Animations</div>
+        <div class="skill-card"><span class="icon">💻</span>HTML5 & CSS3</div>
+        <div class="skill-card"><span class="icon">💻</span>JavaScript & TypeScript</div>
+        <div class="skill-card"><span class="icon">💻</span>React & Vue</div>
+        <div class="skill-card"><span class="icon">💻</span>Node.js & Express</div>
+        <div class="skill-card"><span class="icon">💻</span>Git & GitHub</div>
+        <div class="skill-card"><span class="icon">💻</span>REST APIs</div>
+        <div class="skill-card"><span class="icon">💻</span>Animations</div>
       </div>
     </div>
     <div class="category" data-type="design">
       <div class="category-title">Design</div>
       <div class="category-list">
-        <div class="skill-card">UI/UX Design</div>
-        <div class="skill-card">Creative Prototyping</div>
-        <div class="skill-card">Branding & Identity</div>
-        <div class="skill-card">Responsive Layouts</div>
-        <div class="skill-card">SVG & Vector Graphics</div>
+        <div class="skill-card"><span class="icon">🖌️</span>UI/UX Design</div>
+        <div class="skill-card"><span class="icon">🖌️</span>Creative Prototyping</div>
+        <div class="skill-card"><span class="icon">🖌️</span>Branding & Identity</div>
+        <div class="skill-card"><span class="icon">🖌️</span>Responsive Layouts</div>
+        <div class="skill-card"><span class="icon">🖌️</span>SVG & Vector Graphics</div>
       </div>
     </div>
     <div class="category" data-type="data">
       <div class="category-title">Data Expertise</div>
       <div class="category-list">
-        <div class="skill-card">Data Analysis & Visualization</div>
-        <div class="skill-card">SQL & NoSQL Databases</div>
-        <div class="skill-card">Machine Learning</div>
-        <div class="skill-card">ETL & Data Pipelines</div>
-        <div class="skill-card">Big Data Tools</div>
-        <div class="skill-card">Python & Pandas</div>
+        <div class="skill-card"><span class="icon">📊</span>Data Analysis & Visualization</div>
+        <div class="skill-card"><span class="icon">📊</span>SQL & NoSQL Databases</div>
+        <div class="skill-card"><span class="icon">🤖</span>Machine Learning</div>
+        <div class="skill-card"><span class="icon">📦</span>ETL & Data Pipelines</div>
+        <div class="skill-card"><span class="icon">🗄️</span>Big Data Tools</div>
+        <div class="skill-card"><span class="icon">🐍</span>Python & Pandas</div>
       </div>
     </div>
   </section>
